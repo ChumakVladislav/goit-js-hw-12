@@ -19,7 +19,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 
 let searchQuery = '';
 let page = 1;
-
+let lightbox;
 form.addEventListener('submit', onFormSuccess);
 
 // Отримання і відмальовка фото
@@ -49,7 +49,7 @@ function onFormSuccess(e) {
 
       loadMoreBtn.style.display = 'block';
 
-      let lightbox = new SimpleLightbox('.gallery a');
+      lightbox = new SimpleLightbox('.gallery a');
 
       if (r.totalHits <= page * 40) {
         iziToast.success({
@@ -85,7 +85,7 @@ function loadMoreClick() {
       loadMoreBtn.style.display = 'none';
       return;
     }
-    let lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
     // const photoRef = document.querySelector('.gallery__link');
     const height = document
       .querySelector('.gallery__link')
