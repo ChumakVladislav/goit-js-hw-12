@@ -36,6 +36,7 @@ img {
 
 body {
   background-color: palegoldenrod;
+  scroll-behavior: smooth;
 }
 
 .container {

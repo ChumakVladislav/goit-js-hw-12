@@ -11,6 +11,7 @@ axios.defaults.baseURL = 'https://pixabay.com/';
 //Посилання на форму та галерею
 const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
+
 const loader = document.querySelector('.loader');
 const loadMoreBtn = document.querySelector('.load-more');
 
@@ -51,7 +52,7 @@ function onFormSuccess(e) {
       let lightbox = new SimpleLightbox('.gallery a');
 
       if (r.totalHits <= page * 40) {
-        iziToast.warning({
+        iziToast.success({
           title: "That's all",
           message: 'Try another word',
         });
@@ -85,6 +86,15 @@ function loadMoreClick() {
       return;
     }
     let lightbox = new SimpleLightbox('.gallery a');
+    // const photoRef = document.querySelector('.gallery__link');
+    const height = document
+      .querySelector('.gallery__link')
+      .getBoundingClientRect();
+
+    window.scrollBy({
+      top: height.height * 2,
+      behavior: 'smooth',
+    });
   });
 }
 
